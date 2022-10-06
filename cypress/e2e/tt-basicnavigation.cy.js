@@ -1,63 +1,51 @@
-// tt-basicnavigation.spec
 /// <reference types="cypress" />
 
-import {
-    gotoSiteIndex,
-    gotoPageUrl,
-    clickImageGit,
-    clickImageJava,
-    clickImageLinux,
-    checkPageTitle,
-    clickMenuGit,
-    clickMenuJava,
-    clickMenuLinux
-  } from '../page-objects/tt-indexpage'
+import IndexPage from "../page-objects/tt-indexpage";
 
+const indexPage = new IndexPage();
 
-describe('Basic navigation', () => {
-    beforeEach(() => {
-    gotoSiteIndex()
-    })
+describe("Basic navigation", () => {
+  beforeEach(() => {
+    indexPage.gotoSiteIndex();
+  });
 
-    it('Navigates to Git Basics - From Index page Git image', () => {
-        clickImageGit()
-        checkPageTitle('Git Basics')
-    })
+  it("Navigates to Git Basics - From Index page Git image", () => {
+    indexPage.clickImageGit();
+    indexPage.checkPageTitle("Git Basics");
+  });
 
-    it('Navigates to Java Basics - From Index page Java image', () => {
-        clickImageJava()
-        checkPageTitle('Java Basics')
-    })
+  it("Navigates to Java Basics - From Index page Java image", () => {
+    indexPage.clickImageJava();
+    indexPage.checkPageTitle("Java Basics");
+  });
 
-    it('Navigates to Linux Basics - From Index page Linux image', () => {
-        clickImageLinux()
-        checkPageTitle('Linux Basics')
-    })
+  it("Navigates to Linux Basics - From Index page Linux image", () => {
+    indexPage.clickImageLinux();
+    indexPage.checkPageTitle("Linux Basics");
+  });
 
-    it('Loads test pages', () => {
-        gotoPageUrl('https://www.techtryout.com/testing_example.html')
-        checkPageTitle('Try Out Testing')
-        gotoPageUrl('https://www.techtryout.com/testing_basics.html')
-        checkPageTitle('Testing Basics')
-        gotoPageUrl('https://www.techtryout.com/testing_documents.html')
-        checkPageTitle('Test Documents')
-    })
+  it("Loads test pages", () => {
+    indexPage.gotoPageUrl("https://www.techtryout.com/testing_example.html");
+    indexPage.checkPageTitle("Try Out Testing");
+    indexPage.gotoPageUrl("https://www.techtryout.com/testing_basics.html");
+    indexPage.checkPageTitle("Testing Basics");
+    indexPage.gotoPageUrl("https://www.techtryout.com/testing_documents.html");
+    indexPage.checkPageTitle("Test Documents");
+  });
 
+  it("Navigates with  topnav menu - Java Basics to Linux Basics", () => {
+    indexPage.gotoPageUrl("https://www.techtryout.com/java_basics.html");
+    indexPage.clickMenuLinux();
+    indexPage.checkPageTitle("Linux Basics");
+  });
 
-    it('Navigates with  topnav menu - Java Basics to Linux Basics', () => {
-        gotoPageUrl('https://www.techtryout.com/java_basics.html')
-        clickMenuLinux()
-        checkPageTitle('Linux Basics')
-    })
-    
-    it('Navigates with topnav menu - Git Basics to Java Basics', () => {
-        gotoPageUrl('https://www.techtryout.com/git_basics.html')
-        clickMenuJava()
-        checkPageTitle('Java Basics')
-    })
-    it('Navigates using topnav menu - Index page to Git Basics', () => {
-        clickMenuGit()
-        checkPageTitle('Git Basics')
-    })
-        
-}) 
+  it("Navigates with topnav menu - Git Basics to Java Basics", () => {
+    indexPage.gotoPageUrl("https://www.techtryout.com/git_basics.html");
+    indexPage.clickMenuJava();
+    indexPage.checkPageTitle("Java Basics");
+  });
+  it("Navigates using topnav menu - Index page to Git Basics", () => {
+    indexPage.clickMenuGit();
+    indexPage.checkPageTitle("Git Basics");
+  });
+});

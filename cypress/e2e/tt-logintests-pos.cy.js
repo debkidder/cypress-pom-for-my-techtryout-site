@@ -1,28 +1,24 @@
 // tt-logintests-pos.spec
 /// <reference types="cypress" />
 
-import {
-    gotoPageURL,
-    enterUsername,
-    enterPassword,
-    clickSubmit
-  } from '../page-objects/tt-loginpage'
+import LoginPage from "../page-objects/tt-loginpage";
 
+const loginPage = new LoginPage();
 
-describe('Successful login', () => {
-    beforeEach(() => {
-        gotoPageURL()
-    })
+describe("Successful login", () => {
+  beforeEach(() => {
+    loginPage.gotoPageURL();
+  });
 
-    it('Logs in successfully - Correct username and password', () => {
-        enterUsername('mistermagoo')
-        enterPassword('test123')
-        clickSubmit()
-    })
+  it("Logs in successfully - Correct username and password", () => {
+    loginPage.enterUsername("mistermagoo");
+    loginPage.enterPassword("test123");
+    loginPage.clickSubmit();
+  });
 
-    it('Logs in successfully - Mixed-case username', () => {
-        enterUsername('misterMAGOO')
-        enterPassword('test123')
-        clickSubmit()
-    })
-})      
+  it("Logs in successfully - Mixed-case username", () => {
+    loginPage.enterUsername("misterMAGOO");
+    loginPage.enterPassword("test123");
+    loginPage.clickSubmit();
+  });
+});
