@@ -10,7 +10,7 @@ class LoginPage {
   }
 
   enterPassword(passwordText) {
-    cy.get("#password").type(passwordText);
+    cy.get("#password").type(passwordText, { sensitive: true });
   }
 
   clickSubmit() {

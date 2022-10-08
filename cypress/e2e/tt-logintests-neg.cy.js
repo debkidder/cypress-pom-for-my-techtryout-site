@@ -5,8 +5,8 @@ import LoginPage from "../page-objects/tt-loginpage";
 
 const loginPage = new LoginPage();
 
-const goodPassword = "test123";
-const goodUsername = "mistermagoo";
+const goodUsername = Cypress.env("user.username");
+const goodPassword = Cypress.env("user.password");
 
 describe("Validation Messages", () => {
   beforeEach(() => {
@@ -37,7 +37,6 @@ describe("Validation Messages", () => {
 
   it("Shows correct msg - Disallowed characters in Username", () => {
     loginPage.enterUsername("=?~");
-    // enterPassword('test123')
     loginPage.checkMsgUsername(
       "Only letters, numbers, hyphens, and underscores allowed."
     );
