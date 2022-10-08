@@ -5,6 +5,9 @@ import LoginPage from "../page-objects/tt-loginpage";
 
 const loginPage = new LoginPage();
 
+const goodPassword = "test123";
+const goodUsername = "mistermagoo";
+
 describe("Validation Messages", () => {
   beforeEach(() => {
     loginPage.gotoPageURL();
@@ -13,19 +16,19 @@ describe("Validation Messages", () => {
   it("Shows correct msg - Empty username", () => {
     loginPage.enterUsername("m");
     loginPage.clearUsername();
-    loginPage.enterPassword("test123");
+    loginPage.enterPassword(goodPassword);
     loginPage.checkMsgUsername("Please enter your username.");
   });
 
   it("Shows correct msg - Empty password", () => {
     loginPage.enterPassword("p");
     loginPage.clearPassword();
-    loginPage.enterUsername("mistermagoo");
+    loginPage.enterUsername(goodUsername);
     loginPage.checkMsgPassword("Please enter your password.");
   });
 
   it("Shows correct msg - Disallowed characters in password", () => {
-    loginPage.enterUsername("mistermagoo");
+    loginPage.enterUsername(goodUsername);
     loginPage.enterPassword("=?~");
     loginPage.checkMsgPassword(
       "Only letters, numbers, and these symbols are allowed"
@@ -42,7 +45,7 @@ describe("Validation Messages", () => {
 
   it("Shows correct msg - Bad username/password combination", () => {
     loginPage.enterUsername("DingoDog");
-    loginPage.enterPassword("test123");
+    loginPage.enterPassword(goodPassword);
     loginPage.clickSubmit();
     loginPage.checkMsgBadUsernamePassCombo(
       "Double-check your username and password...then try again."
@@ -59,16 +62,16 @@ describe("Validation Messages", () => {
       "Double-check your username and password...then try again."
     );
     loginPage.clearUsername();
-    loginPage.enterUsername("mistermagoo");
+    loginPage.enterUsername(goodUsername);
     loginPage.clearPassword();
-    loginPage.enterPassword("test123");
+    loginPage.enterPassword(goodPassword);
     loginPage.clickSubmit();
   });
 
   it("Clears username/password - After successful login", () => {
-    loginPage.enterUsername("mistermagoo");
+    loginPage.enterUsername(goodUsername);
     loginPage.clearPassword();
-    loginPage.enterPassword("test123");
+    loginPage.enterPassword(goodPassword);
     loginPage.clickSubmit();
     loginPage.gotoPageURL();
   });

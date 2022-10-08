@@ -2,7 +2,7 @@
 
 class LoginPage {
   gotoPageURL() {
-    cy.visit("https://techtryout.com/testing_loginpage.html");
+    cy.visit("/testing_loginpage.html");
   }
 
   enterUsername(usernameText) {

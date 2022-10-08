@@ -2,7 +2,7 @@
 
 class IndexPage {
   gotoSiteIndex() {
-    cy.visit("https://techtryout.com/");
+    cy.visit("/");
   }
 
   gotoPageUrl(pageUrl) {

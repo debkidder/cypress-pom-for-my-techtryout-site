@@ -22,3 +22,4 @@ exclude/
 
 .env
 Cypress.env
+cypress.env.json
