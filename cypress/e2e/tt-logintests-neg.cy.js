@@ -5,8 +5,8 @@ import LoginPage from "../page-objects/tt-loginpage";
 
 const loginPage = new LoginPage();
 
-const goodUsername = Cypress.env("user.username");
-const goodPassword = Cypress.env("user.password");
+const goodUsername = Cypress.env("username");
+const goodPassword = Cypress.env("password");
 
 describe("Validation Messages", () => {
   beforeEach(() => {
